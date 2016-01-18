@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CreateCustomerForm extends FormBean {
+public class CreateCustomerFormBean extends FormBean {
     private String userName;
     private String firstName;
     private String password;

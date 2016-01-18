@@ -3,7 +3,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChangePwdForm extends FormBean {
+public class ChangePwdFormBean extends FormBean {
     private String oldPassword;
     private String newPassword;
     private String confirmedPassword;

@@ -3,7 +3,8 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestCheckForm extends FormBean {
+public class DepositCheckFormBean extends FormBean {
+    private String userName;
     private String dollarAmount;
     private String confirmAmount;
     private String action;
@@ -12,11 +13,14 @@ public class RequestCheckForm extends FormBean {
     public List<String> getValidationErrors() {
         List<String> errors = new ArrayList<>();
 
+        if ((getUserName() == null || getUserName().length() == 0)) {
+            errors.add("Username is required");
+        }
         if (getDollarAmount() == null || getDollarAmount().length() == 0) {
             errors.add("Amount is required");
         }
         if (getConfirmAmount() == null || getConfirmAmount().length() == 0) {
-            errors.add("Confirm Amount is required");
+            errors.add("Confirmed Amount is required");
         }
         if (getAction() == null) {
             errors.add("Button is required");
@@ -26,14 +30,13 @@ public class RequestCheckForm extends FormBean {
             return errors;
         }
 
-        if (!getAction().equals("Request Check")) {
+        if (!getAction().equals("Deposit Check")) {
             errors.add("Invalid button");
         }
-        if (errors.size() > 0) {
-            return errors;
+        if (getUserName().matches(".*[<>\"].*")) {
+            errors.add("User Name may not contain angle brackets or quotes");
         }
 
-        //The dollar amount user entered should be within range of (10, 1,000,000).
         try {
             String error = checkNumberFormat(getDollarAmount());
             if (!error.equals("")) {
@@ -50,7 +53,17 @@ public class RequestCheckForm extends FormBean {
         if (Double.parseDouble(getDollarAmount()) != Double.parseDouble(getConfirmAmount())) {
             errors.add("Dollar amount and the confirmed don't match");
         }
+
         return errors;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getDollarAmount() {

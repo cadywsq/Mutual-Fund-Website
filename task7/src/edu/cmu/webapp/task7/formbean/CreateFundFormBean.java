@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CreateFundForm extends FormBean {
+public class CreateFundFormBean extends FormBean {
     private String name;
     private String ticker;
     private long firstPrice;

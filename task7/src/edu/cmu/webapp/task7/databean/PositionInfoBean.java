@@ -1,12 +1,12 @@
 package edu.cmu.webapp.task7.databean;
 
-public class PositionInfo {
+public class PositionInfoBean {
     private String name;
     private String shares;
     private String price;
     private String total;
 
-    public PositionInfo(String name, String shares, String price, String total) {
+    public PositionInfoBean(String name, String shares, String price, String total) {
         this.name = name;
         this.shares = shares;
         this.price = price;

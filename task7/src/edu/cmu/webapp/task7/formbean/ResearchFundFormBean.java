@@ -3,7 +3,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResearchFundForm extends FormBean {
+public class ResearchFundFormBean extends FormBean {
     private String fundName;
     private String action;
     private String startDate;

@@ -3,30 +3,27 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginForm extends FormBean{
+public class ViewCustomerFormBean extends FormBean {
     private String userName;
-    private String password;
     private String action;
 
     @Override
     public List<String> getValidationErrors() {
         List<String> errors = new ArrayList<>();
 
-        if (getUserName() == null || getUserName().length() == 0) {
+        if ((getUserName() == null || getUserName().length() == 0)) {
             errors.add("Username is required");
         }
-        if (getPassword() == null || getPassword().length() == 0) {
-            errors.add("Password is required");
-        }
+
         if (getAction() == null) {
-            errors.add("Invalid button");
+            errors.add("Button is required");
         }
 
         if (errors.size() > 0) {
             return errors;
         }
 
-        if (!getAction().equals("customer") && !getAction().equals("employee")) {
+        if (!getAction().equals("View Customer Account")) {
             errors.add("Invalid button");
         }
         if (getUserName().matches(".*[<>\"].*")) {
@@ -36,24 +33,12 @@ public class LoginForm extends FormBean{
         return errors;
     }
 
-    public boolean isEmployee() {
-        return getAction() != null && getAction().equals("employee");
-    }
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getAction() {

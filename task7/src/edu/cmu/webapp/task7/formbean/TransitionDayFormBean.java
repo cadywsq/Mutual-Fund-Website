@@ -1,18 +1,76 @@
 
 package edu.cmu.webapp.task7.formbean;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 
-//import org.mybeans.form.FormBean;
+public class TransitionDayFormBean extends FormBean {
+    private String date;
+    private String price;
+    private String action;
 
-public class TransitionDayForm {
-    //TODO:TransitionDayForm
-//    private String date;
-//    private String action;
+    @Override
+    public List<String> getValidationErrors() {
+        List<String> errors = new ArrayList<>();
+
+        if (getDate() == null || getDate().length() == 0) {
+            errors.add("Date is required");
+        }
+
+        if (getAction() == null) {
+            errors.add("Button is required");
+        }
+
+        if (errors.size() > 0) {
+            return errors;
+        }
+
+        if (getAction() != "Update Price") {
+            errors.add("Button is invalid");
+        }
+        try {
+            Date transitionDate = dateFormat(getDate());
+            //TODO: if date input is smaller than database last entry, return error.
+        } catch (MyException e) {
+            errors.add(e.getMessage());
+        }
+
+        try {
+            String error = checkNumberFormat(getPrice());
+            if (!error.equals("")) {
+                errors.add(error);
+            }
+        } catch (MyException e) {
+            errors.add(e.getMessage());
+        }
+
+        return errors;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 //
 //    public TransitionDayForm(HttpServletRequest request) {
 //        action = request.getParameter("action");
@@ -66,5 +124,4 @@ public class TransitionDayForm {
 //        }
 //
 //        return errors;
-    }
 }
