@@ -8,8 +8,8 @@ public class TransactionBean implements Comparable<TransactionBean> {
 
     public final static int BUY_FUND = 1;
     public final static int SELL_FUND = 2;
-    public final static int REQUEST_CHECK = 1;
-    public final static int DEPOSIT_CHECK = 2;
+    public final static int REQUEST_CHECK = 3;
+    public final static int DEPOSIT_CHECK = 4;
 
     private int transactionId;
     private int customerID;
