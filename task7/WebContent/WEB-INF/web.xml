@@ -7,7 +7,7 @@
     <servlet>
         <servlet-name>  controller-servlet       </servlet-name>
         <servlet-class>
-        	edu.cmu.cs.webapp.task7.controller.Controller
+        	edu.cmu.webapp.task7.controller.Controller
         </servlet-class>
         <init-param>
           <param-name>    jdbcDriverName          </param-name> 
