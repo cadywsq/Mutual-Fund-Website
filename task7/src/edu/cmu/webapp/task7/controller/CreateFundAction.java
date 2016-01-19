@@ -12,6 +12,9 @@ import org.genericdao.Transaction;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import edu.cmu.webapp.task7.databean.FundBean;
+import edu.cmu.webapp.task7.model.FundDAO;
+
 public class CreateFundAction  extends Action {
 	private FormBeanFactory<CreateFundForm> formBeanFactory = FormBeanFactory
 			.getInstance(CreateFundForm.class);

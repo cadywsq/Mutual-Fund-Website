@@ -11,6 +11,8 @@ import org.mybeans.form.FormBeanFactory;
 
 import edu.cmu.webapp.task7.databean.CustomerBean;
 import edu.cmu.webapp.task7.databean.EmployeeBean;
+import edu.cmu.webapp.task7.model.CustomerDAO;
+import edu.cmu.webapp.task7.model.EmployeeDAO;
 import edu.cmu.webapp.task7.model.Model;
 
 public class ChangePwdAction extends Action {

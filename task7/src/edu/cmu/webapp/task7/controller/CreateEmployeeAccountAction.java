@@ -10,10 +10,9 @@ import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
-import edu.cmu.cs.webapp.task7.databean.EmployeeBean;
-import edu.cmu.cs.webapp.task7.formbean.CreateEmployeeForm;
-import edu.cmu.cs.webapp.task7.model.EmployeeDAO;
-import edu.cmu.cs.webapp.task7.model.Model;
+import edu.cmu.webapp.task7.databean.EmployeeBean;
+import edu.cmu.webapp.task7.model.CustomerDAO;
+import edu.cmu.webapp.task7.model.EmployeeDAO;
 
 public class CreateEmployeeAccountAction extends Action {
 	private FormBeanFactory<CreateEmployeeForm> formBeanFactory = FormBeanFactory
