@@ -6,24 +6,23 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import edu.cmu.webapp.task7.databean.CustomerBean;
 import edu.cmu.webapp.task7.databean.EmployeeBean;
-import edu.cmu.webapp.task7.formbean.CreateCustomerForm;
+import edu.cmu.webapp.task7.formbean.CreateCustomerFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
-import edu.cmu.webapp.task7.model.Model;
 
 public class CreateCustomerAccountAction extends Action {
-	private FormBeanFactory<CreateCustomerForm> formBeanFactory = FormBeanFactory
-			.getInstance(CreateCustomerForm.class);
+	private FormBeanFactory<CreateCustomerFormBean> formBeanFactory = FormBeanFactory
+			.getInstance(CreateCustomerFormBean.class);
 
 	private CustomerDAO customerDAO;
 
-	public CreateCustomerAccountAction(Model model) {
-		customerDAO = model.getCustomerDAO();
+	public CreateCustomerAccountAction(AbstractDAOFactory dao) {
+		customerDAO = dao.getCustomerDAO();
 	}
 
 	public String getName() {
@@ -42,7 +41,7 @@ public class CreateCustomerAccountAction extends Action {
 			if (session.getAttribute("user") != null &&
 					session.getAttribute("user") instanceof EmployeeBean) {
 				// extract form from http request
-				CreateCustomerForm form = formBeanFactory.create(request);
+				CreateCustomerFormBean form = formBeanFactory.create(request);
 				request.setAttribute("form", form);
 
 				// If no parameters were passed in the form,
@@ -85,9 +84,6 @@ public class CreateCustomerAccountAction extends Action {
 				
 				return "login.do";
 			}
-		} catch (RollbackException e) {
-			errors.add(e.getMessage());
-			return "createCustomer.jsp";
 		} catch (FormBeanException e) {
 			errors.add(e.getMessage());
 			return "createCustomer.jsp";

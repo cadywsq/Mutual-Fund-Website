@@ -10,37 +10,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.cmu.webapp.task7.databean.CustomerBean;
-import edu.cmu.webapp.task7.model.Model;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void init() throws ServletException {
-        Model model = new Model(getServletConfig());
-
-        Action.add(new LoginAction(model));
-        Action.add(new CreateFundAction(model));
-        Action.add(new LogoutAction(model));
-        Action.add(new EmployeeMainAction(model));
-        Action.add(new SellFundAction(model));
-        Action.add(new CustomerMainAction(model));
-        Action.add(new CreateEmployeeAccountAction(model));
-        Action.add(new CreateCustomerAccountAction(model));
-        Action.add(new DepositCheckAction(model));
-        Action.add(new TransitionDayAction(model));
-        Action.add(new ViewCustomerAction(model));
-        Action.add(new RequestCheckAction(model));
-        Action.add(new ChangePwdAction(model));
-        Action.add(new ViewCustomerAccountAction(model));
-        Action.add(new ResetPwdAction(model));
-        Action.add(new HistoryAction(model));
-        Action.add(new ViewPortfolioAction(model));
-        Action.add(new BuyFundAction(model));
-        Action.add(new ResearchFundAction(model));
-        Action.add(new AccountManageC(model));
-        Action.add(new AccountManageE(model));
-        Action.add(new SuccessAction(model));
+        AbstractDAOFactory dao = AbstractDAOFactory.getDAOFactory();
+        Action.add(new LoginAction(dao));
+        Action.add(new CreateFundAction(dao));
+        Action.add(new LogoutAction(dao));
+//        Action.add(new EmployeeMainAction(dao));
+//        Action.add(new SellFundAction(dao));
+//        Action.add(new CustomerMainAction(dao));
+//        Action.add(new CreateEmployeeAccountAction(dao));
+//        Action.add(new CreateCustomerAccountAction(dao));
+//        Action.add(new DepositCheckAction(dao));
+//        Action.add(new TransitionDayAction(dao));
+//        Action.add(new ViewCustomerAction(dao));
+//        Action.add(new RequestCheckAction(dao));
+//        Action.add(new ChangePwdAction(dao));
+//        Action.add(new ViewCustomerAccountAction(dao));
+//        Action.add(new ResetPwdAction(dao));
+//        Action.add(new HistoryAction(dao));
+//        Action.add(new ViewPortfolioAction(dao));
+//        Action.add(new BuyFundAction(dao));
+//        Action.add(new ResearchFundAction(dao));
+//        Action.add(new AccountManageC(dao));
+//        Action.add(new AccountManageE(dao));
+//        Action.add(new SuccessAction(dao));
 }
 
 

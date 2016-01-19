@@ -4,7 +4,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResetPwdFormBean extends FormBean {
+public class ResetPwdFormBean extends MyFormBean {
 
     private String customer;
     private String newPassword;

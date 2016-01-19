@@ -3,11 +3,11 @@ package edu.cmu.webapp.task7.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import edu.cmu.webapp.task7.model.Model;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 
 public class LogoutAction extends Action {
 
-	public LogoutAction(Model model) {
+	public LogoutAction(AbstractDAOFactory dao) {
 		// ignore it
 	}
 

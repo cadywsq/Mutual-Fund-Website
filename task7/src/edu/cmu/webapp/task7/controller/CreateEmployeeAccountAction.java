@@ -6,22 +6,22 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import edu.cmu.webapp.task7.databean.EmployeeBean;
-import edu.cmu.webapp.task7.model.CustomerDAO;
+import edu.cmu.webapp.task7.formbean.CreateEmployeeFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.EmployeeDAO;
 
 public class CreateEmployeeAccountAction extends Action {
-	private FormBeanFactory<CreateEmployeeForm> formBeanFactory = FormBeanFactory
-			.getInstance(CreateEmployeeForm.class);
+	private FormBeanFactory<CreateEmployeeFormBean> formBeanFactory = FormBeanFactory
+			.getInstance(CreateEmployeeFormBean.class);
 
 	private EmployeeDAO employeeDAO;
 
-	public CreateEmployeeAccountAction(Model model) {
-		employeeDAO = model.getEmployeeDAO();
+	public CreateEmployeeAccountAction(AbstractDAOFactory dao) {
+		employeeDAO = dao.getEmployeeDAO();
 	}
 
 	public String getName() {
@@ -39,7 +39,7 @@ public class CreateEmployeeAccountAction extends Action {
 			// process and return success
 			if (session.getAttribute("user") != null &&
 					session.getAttribute("user") instanceof EmployeeBean) {
-				CreateEmployeeForm form = formBeanFactory.create(request);
+				CreateEmployeeFormBean form = formBeanFactory.create(request);
 				request.setAttribute("form", form);
 
 				// If no parameters were passed in the form,
@@ -82,9 +82,6 @@ public class CreateEmployeeAccountAction extends Action {
 				
 				return "login.do";
 			}
-		} catch (RollbackException e) {
-			errors.add(e.getMessage());
-			return "createEmployee.jsp";
 		} catch (FormBeanException e) {
 			errors.add(e.getMessage());
 			return "createEmployee.jsp";

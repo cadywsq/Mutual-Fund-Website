@@ -3,7 +3,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestCheckFormBean extends FormBean {
+public class RequestCheckFormBean extends MyFormBean {
     private String dollarAmount;
     private String confirmAmount;
     private String action;

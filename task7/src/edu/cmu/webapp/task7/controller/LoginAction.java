@@ -9,21 +9,21 @@ import javax.servlet.http.HttpSession;
 import org.mybeans.form.FormBeanFactory;
 
 import edu.cmu.webapp.task7.databean.EmployeeBean;
-import edu.cmu.webapp.task7.formbean.LoginForm;
+import edu.cmu.webapp.task7.formbean.LoginFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
 import edu.cmu.webapp.task7.model.EmployeeDAO;
-import edu.cmu.webapp.task7.model.Model;
 
 public class LoginAction extends Action {
-	private FormBeanFactory<LoginForm> formBeanFactory =
-			FormBeanFactory.getInstance(LoginForm.class);
+	private FormBeanFactory<LoginFormBean> formBeanFactory =
+			FormBeanFactory.getInstance(LoginFormBean.class);
 	
 	private EmployeeDAO employeeDAO;
 	private CustomerDAO customerDAO;
 
-	public LoginAction(Model model) {
-		customerDAO = model.getCustomerDAO();
-		employeeDAO = model.getEmployeeDAO();
+	public LoginAction(AbstractDAOFactory dao) {
+		customerDAO = dao.getCustomerDAO();
+		employeeDAO = dao.getEmployeeDAO();
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class LoginAction extends Action {
 		}
 		
 		try {
-			LoginForm form = formBeanFactory.create(request);
+			LoginFormBean form = formBeanFactory.create(request);
 			request.setAttribute("form", form);
 			if (!form.isPresent()) {
 				return "login.jsp";
@@ -57,11 +57,14 @@ public class LoginAction extends Action {
 				return "login.jsp";
 			}
 			
-			if (form.isEmployee())
-			request.setAttribute("user", null);
-			
+			if (form.isEmployee()) {
+			    // need to modify here.
+			    return "login.jsp";
+			}
+			return "login.jsp";
+		} catch(Exception e) {
+		    return "login.jsp";
 		}
-		return ;
 	}
 	
 }

@@ -19,14 +19,14 @@ public class EmployeeDAO {
         session.close();
         this.sessionFactory.close();
     }
-    public CustomerBean read(String userName) {
+    public EmployeeBean read(String userName) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();
-        CustomerBean customer = (CustomerBean) session.get(CustomerBean.class, userName);
+        EmployeeBean employee = (EmployeeBean) session.get(EmployeeBean.class, userName);
         session.getTransaction().commit();
         session.close();
         this.sessionFactory.close();
-        return customer;
+        return employee;
     }
     public void update(EmployeeBean employee) {
         Session session = this.sessionFactory.openSession();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TransitionDayFormBean extends FormBean {
+public class TransitionDayFormBean extends MyFormBean {
     private String date;
     private String price;
     private String action;

@@ -12,17 +12,20 @@ import org.genericdao.Transaction;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import edu.cmu.webapp.task7.databean.EmployeeBean;
 import edu.cmu.webapp.task7.databean.FundBean;
+import edu.cmu.webapp.task7.formbean.CreateFundFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.FundDAO;
 
 public class CreateFundAction  extends Action {
-	private FormBeanFactory<CreateFundForm> formBeanFactory = FormBeanFactory
-			.getInstance(CreateFundForm.class);
+	private FormBeanFactory<CreateFundFormBean> formBeanFactory = FormBeanFactory
+			.getInstance(CreateFundFormBean.class);
 
 	private FundDAO fundDAO;
 
-	public CreateFundAction(Model model) {
-		fundDAO = model.getFundDAO();
+	public CreateFundAction(AbstractDAOFactory dao) {
+		fundDAO = dao.getFundDAO();
 	}
 
 	public String getName() {
@@ -40,7 +43,7 @@ public class CreateFundAction  extends Action {
 			// process and return success
 			if (session.getAttribute("user") != null &&
 					session.getAttribute("user") instanceof EmployeeBean) {
-				CreateFundForm form = formBeanFactory.create(request);
+				CreateFundFormBean form = formBeanFactory.create(request);
 				request.setAttribute("form", form);
 
 				// If no parameters were passed in the form,
@@ -66,7 +69,7 @@ public class CreateFundAction  extends Action {
 					// If everything is correct, create new fund
 					// using fundDAO to create new fundbean
 					FundBean newFund = new FundBean();
-					newFund.setName(form.getFundName());
+					newFund.setName(form.getName());
 					newFund.setSymbol(form.getTicker());
 					
 					fundDAO.createAutoIncrement(newFund);

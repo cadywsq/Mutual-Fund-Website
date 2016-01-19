@@ -11,19 +11,20 @@ import org.mybeans.form.FormBeanFactory;
 
 import edu.cmu.webapp.task7.databean.CustomerBean;
 import edu.cmu.webapp.task7.databean.EmployeeBean;
+import edu.cmu.webapp.task7.formbean.ChangePwdFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
 import edu.cmu.webapp.task7.model.EmployeeDAO;
-import edu.cmu.webapp.task7.model.Model;
 
 public class ChangePwdAction extends Action {
-	private FormBeanFactory<ChangePwdForm> formBeanFactory = FormBeanFactory
-			.getInstance(ChangePwdForm.class);
+	private FormBeanFactory<ChangePwdFormBean> formBeanFactory = FormBeanFactory
+			.getInstance(ChangePwdFormBean.class);
 	private CustomerDAO customerDAO;
 	private EmployeeDAO employeeDAO;
 
-	public ChangePwdAction(Model model) {
-		customerDAO = model.getCustomerDAO();
-		employeeDAO = model.getEmployeeDAO();
+	public ChangePwdAction(AbstractDAOFactory dao) {
+		customerDAO = dao.getCustomerDAO();
+		employeeDAO = dao.getEmployeeDAO();
 	}
 
 	public String getName() {
@@ -46,7 +47,7 @@ public class ChangePwdAction extends Action {
 				CustomerBean user = (CustomerBean) request.getSession().getAttribute("user");
 
 				// extract change pwd form bean from request
-				ChangePwdForm form = formBeanFactory.create(request);
+				ChangePwdFormBean form = formBeanFactory.create(request);
 				request.setAttribute("form", form);
 
 				// if no parameters were passed in the form,
@@ -69,7 +70,7 @@ public class ChangePwdAction extends Action {
 				/*******/
 				
 				// otherwise, the password is correct and revise to new pwd
-				user.setPassword(form.getNewPwd());
+				user.setPassword(form.getNewPassword());
 				customerDAO.update(user);
 				
 				request.removeAttribute("form");
@@ -85,7 +86,7 @@ public class ChangePwdAction extends Action {
 				EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
 				
 				// extract change pwd form bean from request
-				ChangePwdForm form = formBeanFactory.create(request);
+				ChangePwdFormBean form = formBeanFactory.create(request);
 				request.setAttribute("form", form);
 
 				// if no parameters were passed in the form,
@@ -100,7 +101,7 @@ public class ChangePwdAction extends Action {
 					return "employeePSW.jsp";
 				}
 				
-				if (!form.getCurrPwd().equals(employeeDAO.read(user.getUserName()).getPassword())) {
+				if (!form.getOldPassword().equals(employeeDAO.read(user.getUserName()).getPassword())) {
 					errors.add("Incorrect original password");
 				}
 				
@@ -108,7 +109,7 @@ public class ChangePwdAction extends Action {
 					return "employeePSW.jsp";
 				}
 
-				user.setPassword(form.getNewPwd());
+				user.setPassword(form.getNewPassword());
 				employeeDAO.update(user);
 				
 				request.getSession().setAttribute("msg", "Password was changed successfully.");
@@ -125,9 +126,6 @@ public class ChangePwdAction extends Action {
 				return "login.do";
 			}
 
-        } catch (RollbackException e) {
-        	errors.add(e.getMessage());
-        	return "error.jsp";
         } catch (FormBeanException e) {
         	errors.add(e.getMessage());
         	return "error.jsp";

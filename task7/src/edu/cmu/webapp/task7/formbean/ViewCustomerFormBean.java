@@ -3,7 +3,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewCustomerFormBean extends FormBean {
+public class ViewCustomerFormBean extends MyFormBean {
     private String userName;
     private String action;
 
