@@ -49,6 +49,7 @@
 						<table>
 							<tr>
 								<td>
+								<form method="post" action="login.do">
 									<div class="form-group">
 										<label>Username</label> <input class="form-control"
 											placeholder="Enter here your user name here">
@@ -65,7 +66,7 @@
 										<span><a href="SendResetPasswordMail">Trouble
 												Logging in</a></span>
 									</p>
-
+								</form>
 								</td>
 								<td>
 									<div class="ticker" style="margin-left: 60px;">

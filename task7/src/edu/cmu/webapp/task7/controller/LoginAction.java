@@ -36,7 +36,7 @@ public class LoginAction extends Action {
 		HttpSession session = request.getSession();
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
-		
+		System.out.println("1");
 		if (session.getAttribute("user") != null) {
 			if (session.getAttribute("user") instanceof EmployeeBean) {
 				return "";
@@ -44,7 +44,7 @@ public class LoginAction extends Action {
 				return "";
 			}
 		}
-		
+		System.out.println("2");
 		try {
 			LoginFormBean form = formBeanFactory.create(request);
 			request.setAttribute("form", form);
@@ -59,9 +59,10 @@ public class LoginAction extends Action {
 			
 			if (form.isEmployee()) {
 			    // need to modify here.
-			    return "login.jsp";
+			    return "employeeMain.jsp";
+			} else {
+			    return "viewMyAccount.jsp";
 			}
-			return "login.jsp";
 		} catch(Exception e) {
 		    return "login.jsp";
 		}
