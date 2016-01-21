@@ -15,7 +15,7 @@
 		<!-- Navigation -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-offset-1 col-md-11">
+				<div class="col-sm-12  col-xs-offset-1">
 					<nav class="navbar" role="navigation">
 						<div class="navbar-header">
 							<a href="employeeMain.html"> <img src="img/logo.png"
@@ -34,7 +34,7 @@
 								<li><a href="createFunds.html">Create Fund</a></li>
 								<li><a href="transitionDay.html">Transition Day</a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right">
+							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown">Employee Account<strong
 										class="caret"></strong></a>

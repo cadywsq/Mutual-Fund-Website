@@ -5,12 +5,15 @@
 <div>
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8">
-			<h3>Deposit Check</h3>
+			<h4>Deposit Check</h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8">
-			<form role="form">
+		<c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+			<form method="post" action="depositCheck.do">
 				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-4">
@@ -48,8 +51,7 @@
 
 				<div class="row">
 					<div class="col-xs-6" align="right">
-						<button type="submit" name="create" class="btn btn-default">Deposit
-							Check</button>
+					<input type="submit" class="btn btn-default" name="action" value="Deposit Check">
 						<br> <br> <br>
 					</div>
 				</div>

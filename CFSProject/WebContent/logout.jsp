@@ -37,12 +37,24 @@
 				<div class="row">
 					<div class="col-md-offset-1 col-md-10">
 						<div>
-						<br><br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 							<div class="form-group">
-								<p><h3>You have successfully logged out</h3>
-								<br> <br> Please Click <a href=#>here</a> to login again. </p>
+								<p>
+								<h3>You have successfully logged out</h3>
+								<br> <br> Please Click <a href=#>here</a> to login
+								again.
+								</p>
 							</div>
-						<br><br><br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
 						</div>
 					</div>
 				</div>

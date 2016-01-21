@@ -52,7 +52,7 @@
 								<form method="post" action="login.do">
 									<div class="form-group">
 										<label>Username</label>
-										<input class="form-control" placeholder="Enter here your user name here" name="userName">
+										<input class="form-control" placeholder="Enter here your user name here" name="userName" value="${username}">
 									</div>
 									<div class="form-group">
 										<label>Password</label>

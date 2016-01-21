@@ -5,12 +5,15 @@
   <div>
     <div class="row">
       <div class="col-md-offset-2 col-md-8">
-        <h3>Create Fund</h3>
+        <h2>Create Fund</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-md-offset-2 col-md-8">
-      <form role="form">
+      <c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+      <form method="post" action="createFund.do">
         <div class="form-group">
 	        <div class="row">
 		          <div class="col-xs-2">
@@ -35,7 +38,7 @@
 		<br>
         <div class="row">
         <div class="col-xs-6" align="right">
-        <button type="submit" name="create" class="btn btn-default">Create Fund</button>
+        <input type="submit" class="btn btn-default" name="action" value="Create Fund">
         <br><br><br>
         </div>
         </div>

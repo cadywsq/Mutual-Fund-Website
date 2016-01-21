@@ -9,17 +9,11 @@
 			${customer.getLastName()}</h2>
 	</div>
 </div>
-
-
-
-
 <div class="row">
 	<div class="col-md-offset-2 col-md-8">
 		<c:forEach var="error" items="${errors}">
 			<h3 style="color: red">${error}</h3>
 		</c:forEach>
-
-
 		<div class="table-responsive">
 			<form method="POST">
 				<table class="table table-hover table-striped">
