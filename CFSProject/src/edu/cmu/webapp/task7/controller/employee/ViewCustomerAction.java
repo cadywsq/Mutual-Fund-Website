@@ -6,6 +6,7 @@ import edu.cmu.webapp.task7.databean.EmployeeBean;
 import edu.cmu.webapp.task7.formbean.LoginFormBean;
 import edu.cmu.webapp.task7.formbean.MyFormBean;
 import edu.cmu.webapp.task7.formbean.ViewCustomerFormBean;
+import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,12 @@ import java.util.List;
  * @author Siqi Wang siqiw1 on 1/20/16.
  */
 public class ViewCustomerAction extends Action {
-    private FormBeanFactory<LoginFormBean> formBeanFactory = FormBeanFactory.getInstance(ViewCustomerFormBean.class);
+    private FormBeanFactory<ViewCustomerFormBean> formBeanFactory = FormBeanFactory.getInstance(ViewCustomerFormBean.class);
     private CustomerDAO customerDAO;
+
+    public ViewCustomerAction(AbstractDAOFactory dao) {
+        customerDAO = dao.getCustomerDAO();
+    }
 
     @Override
     public String getName() {
@@ -29,11 +34,11 @@ public class ViewCustomerAction extends Action {
     public String perform(HttpServletRequest request) {
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors", errors);
-        HttpSession session = request.getSession();
+        HttpSession employeeSession = request.getSession();
         try {
             ViewCustomerFormBean form = formBeanFactory.create(request);
             request.setAttribute("form", form);
-            EmployeeBean employee = (EmployeeBean)session.getAttribute("user");
+            EmployeeBean employee = (EmployeeBean)employeeSession.getAttribute("user");
             //Check employee login.
             if (employee == null) {
                 return "login.jsp";
