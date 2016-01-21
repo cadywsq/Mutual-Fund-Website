@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-ofset-2 col-md-8">
 			<form role="form">
 				<div class="form-group">
 					<div class="row">
@@ -30,7 +30,7 @@
 
 				<div class="row">
 					<div class="col-xs-6" align="right">
-						<button type="submit" name="create" class="btn btn-default">Deposit Check</button>
+						<button type="submit" name="create" class="btn btn-default">View Customer Account</button>
 						<br> <br> <br>
 					</div>
 				</div>

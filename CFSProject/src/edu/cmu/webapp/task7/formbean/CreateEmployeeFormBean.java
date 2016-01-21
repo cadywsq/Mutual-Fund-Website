@@ -10,7 +10,6 @@ public class CreateEmployeeFormBean extends MyFormBean {
     private String password;
     private String confirmPassword;
     private String action;
-    private String agree;
 
     @Override
     public List<String> getValidationErrors() {
@@ -108,11 +107,4 @@ public class CreateEmployeeFormBean extends MyFormBean {
         this.action = action;
     }
 
-    public String getAgree() {
-        return agree;
-    }
-
-    public void setAgree(String agree) {
-        this.agree = agree;
-    }
 }
