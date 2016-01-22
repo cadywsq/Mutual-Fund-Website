@@ -6,6 +6,7 @@ import edu.cmu.webapp.task7.databean.EmployeeBean;
 import edu.cmu.webapp.task7.formbean.ViewCustomerFormBean;
 import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
+import edu.cmu.webapp.task7.model.TransactionDAO;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
@@ -20,9 +21,11 @@ import java.util.List;
 public class ViewCustomerAction extends Action {
     private FormBeanFactory<ViewCustomerFormBean> formBeanFactory = FormBeanFactory.getInstance(ViewCustomerFormBean.class);
     private CustomerDAO customerDAO;
+    private TransactionDAO transactionDAO;
 
     public ViewCustomerAction(AbstractDAOFactory dao) {
         customerDAO = dao.getCustomerDAO();
+        transactionDAO = dao.getTransactionDAO();
     }
 
     @Override
@@ -45,30 +48,30 @@ public class ViewCustomerAction extends Action {
             }
 
             if (!form.isPresent()) {
-                return "viewCustomerAccount.jsp";
+                return "selectCustomerAccount.jsp";
             }
 
-            if (form.getAction().equals("View Customer Account")) {
+            if (form.getAction().equals("Get Customer Details")) {
                 errors.addAll(form.getValidationErrors());
                 //check form input.
                 if (errors.size() > 0) {
-                    return "viewCustomerAccount.jsp";
+                    return "selectCustomerAccount.jsp";
                 }
                 CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
                 //check customer existence.
                 if (customer == null) {
                     errors.add("The customer doesn't exist");
-                    return "viewCustomerAccount.jsp";
+                    return "selectCustomerAccount.jsp";
                 }
                 //print out viewMyAccount.
                 HttpSession customerSession = request.getSession();
-
                 customerSession.setAttribute("customer", customer);
-                return "viewMyAccount.jsp";
+                customerSession.setAttribute("fund",transactionDAO.findTransactionsByCustomerId(customer.getCustomerId()));
+                return "viewCustomerAccount.jsp";
             }
         } catch (FormBeanException e) {
-            return "viewCustomerAccount.jsp";
+            return "selectCustomerAccount.jsp";
         }
-        return "viewCustomerAccount.jsp";
+        return "selectCustomerAccount.jsp";
     }
 }

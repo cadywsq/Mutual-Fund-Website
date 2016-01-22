@@ -1,13 +1,13 @@
 package edu.cmu.webapp.task7.model;
 
+import edu.cmu.webapp.task7.databean.CustomerBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.CustomerBean;
-
 public class CustomerDAO {
     private SessionFactory sessionFactory;
+
     public CustomerDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -16,6 +16,7 @@ public class CustomerDAO {
             e.printStackTrace();
         }
     }
+
     public void createCustomer(CustomerBean customer) {
         if (customer == null) {
             return;
@@ -33,6 +34,7 @@ public class CustomerDAO {
             session.close();
         }
     }
+
     public void updateCustomer(CustomerBean customer) {
         if (customer == null) {
             return;
@@ -50,6 +52,7 @@ public class CustomerDAO {
             session.close();
         }
     }
+
     public CustomerBean getCustomerByUserName(String username) {
         if (username == null || username.length() == 0) {
             return null;
@@ -69,6 +72,7 @@ public class CustomerDAO {
         }
         return null;
     }
+
     public CustomerBean getCustomerById(int customerId) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -85,6 +89,7 @@ public class CustomerDAO {
         }
         return null;
     }
+
     public void deleteCustomerById(int customerId) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -100,6 +105,7 @@ public class CustomerDAO {
             session.close();
         }
     }
+
     public void deleteCustomer(CustomerBean customer) {
         if (customer == null) {
             return;

@@ -1,32 +1,33 @@
 package edu.cmu.webapp.task7.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.mybeans.form.FormBeanFactory;
-
 import edu.cmu.webapp.task7.databean.CustomerBean;
 import edu.cmu.webapp.task7.databean.EmployeeBean;
 import edu.cmu.webapp.task7.formbean.LoginFormBean;
 import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
 import edu.cmu.webapp.task7.model.EmployeeDAO;
+import org.mybeans.form.FormBeanFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginAction extends Action {
     private FormBeanFactory<LoginFormBean> formBeanFactory = FormBeanFactory.getInstance(LoginFormBean.class);
     private EmployeeDAO employeeDAO;
     private CustomerDAO customerDAO;
+
     public LoginAction(AbstractDAOFactory dao) {
         customerDAO = dao.getCustomerDAO();
         employeeDAO = dao.getEmployeeDAO();
     }
+
     @Override
     public String getName() {
         return "login.do";
     }
+
     @Override
     public String perform(HttpServletRequest request) {
         System.out.println("LoginAction: inside perform");
@@ -76,7 +77,7 @@ public class LoginAction extends Action {
                 }
             }
             return "login.jsp";
-        } catch(Exception e) {
+        } catch (Exception e) {
             return "login.jsp";
         }
     }

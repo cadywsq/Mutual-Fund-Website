@@ -1,16 +1,16 @@
 package edu.cmu.webapp.task7.model;
 
-import java.util.List;
-
+import edu.cmu.webapp.task7.databean.FundPriceHistoryBean;
+import edu.cmu.webapp.task7.databean.TransactionBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.FundPriceHistoryBean;
-import edu.cmu.webapp.task7.databean.TransactionBean;
+import java.util.List;
 
 public class FundPriceHistoryDAO {
     private SessionFactory sessionFactory;
+
     public FundPriceHistoryDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -19,6 +19,7 @@ public class FundPriceHistoryDAO {
             e.printStackTrace();
         }
     }
+
     public void createFundPriceHistory(FundPriceHistoryBean fundPriceHistory) {
         if (fundPriceHistory == null) {
             return;
@@ -36,6 +37,7 @@ public class FundPriceHistoryDAO {
             session.close();
         }
     }
+
     public void updateFundPriceHistory(FundPriceHistoryBean fundPriceHistory) {
         if (fundPriceHistory == null) {
             return;
@@ -53,6 +55,7 @@ public class FundPriceHistoryDAO {
             session.close();
         }
     }
+
     public void deleteFundPriceHistory(FundPriceHistoryBean fundPriceHistory) {
         if (fundPriceHistory == null) {
             return;
@@ -70,16 +73,20 @@ public class FundPriceHistoryDAO {
             session.close();
         }
     }
+
     public List<TransactionBean> findFundPriceHistoryByFundId(int fundId) {
         return null;
     }
+
     public List<TransactionBean> findFundPriceHistoryByPriceDate(String priceDate) {
         return null;
     }
+
     public void deleteFundPriceHistoryByFundId(int fundId) {
-        
+
     }
+
     public void deleteFundPriceHistoryByPriceDate(String priceDate) {
-        
+
     }
 }

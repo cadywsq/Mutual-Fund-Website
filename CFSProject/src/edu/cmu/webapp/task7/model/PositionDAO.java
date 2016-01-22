@@ -1,15 +1,15 @@
 package edu.cmu.webapp.task7.model;
 
-import java.util.List;
-
+import edu.cmu.webapp.task7.databean.PositionBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.PositionBean;
+import java.util.List;
 
 public class PositionDAO {
     private SessionFactory sessionFactory;
+
     public PositionDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -18,6 +18,7 @@ public class PositionDAO {
             e.printStackTrace();
         }
     }
+
     public void createPosition(PositionBean position) {
         if (position == null) {
             return;
@@ -35,6 +36,7 @@ public class PositionDAO {
             session.close();
         }
     }
+
     public void updatePosition(PositionBean position) {
         if (position == null) {
             return;
@@ -52,15 +54,19 @@ public class PositionDAO {
             session.close();
         }
     }
+
     public PositionBean getPosition(int customerId, int fundId) {
         return null;
     }
+
     public List<PositionBean> getPositionsByCustomerId(int customerId) {
         return null;
     }
+
     public List<PositionBean> getPositionsByFundId(int fundId) {
         return null;
     }
+
     public void deletePosition(PositionBean position) {
         if (position == null) {
             return;
@@ -78,10 +84,12 @@ public class PositionDAO {
             session.close();
         }
     }
+
     public void deletePositionsByCustomerId(int customerId) {
-        
+
     }
+
     public void deletePositionsByFundId(int fundId) {
-        
+
     }
 }

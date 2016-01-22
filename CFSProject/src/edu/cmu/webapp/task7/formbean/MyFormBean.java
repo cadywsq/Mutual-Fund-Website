@@ -1,12 +1,12 @@
 package edu.cmu.webapp.task7.formbean;
 
+import org.mybeans.form.FormBean;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import org.mybeans.form.FormBean;
 
 /**
  * @author Siqi Wang siqiw1 on 1/14/16.

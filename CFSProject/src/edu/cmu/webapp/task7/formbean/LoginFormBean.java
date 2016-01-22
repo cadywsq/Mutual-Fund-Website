@@ -3,7 +3,7 @@ package edu.cmu.webapp.task7.formbean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginFormBean extends MyFormBean{
+public class LoginFormBean extends MyFormBean {
     private String userName;
     private String password;
     private String action;
@@ -34,7 +34,7 @@ public class LoginFormBean extends MyFormBean{
     public boolean isEmployee() {
         return getAction() != null && getAction().equals("Employee Login");
     }
-    
+
     public boolean isCustomer() {
         return getAction() != null && getAction().equals("Customer Login");
     }

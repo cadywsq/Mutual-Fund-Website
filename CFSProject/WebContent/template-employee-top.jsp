@@ -29,7 +29,7 @@
 										Account</a></li>
 								<li><a href="createCustomer.html">Create Customer
 										Account</a></li>
-								<li><a href="viewCustomer.html">View Customer Account</a></li>
+								<li><a href="viewCustomerAccount.html">View Customer Account</a></li>
 								<li><a href="depositCheck.html">Deposit Check</a></li>
 								<li><a href="createFunds.html">Create Fund</a></li>
 								<li><a href="transitionDay.html">Transition Day</a></li>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author Siqi Wang siqiw1 on 1/21/16.
  */
-public class ViewFundAction extends Action{
+public class ViewFundAction extends Action {
     private FundDAO fundDAO;
 
     public ViewFundAction(AbstractDAOFactory dao) {

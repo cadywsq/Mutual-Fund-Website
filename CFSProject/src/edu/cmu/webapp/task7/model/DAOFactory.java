@@ -16,26 +16,32 @@ public class DAOFactory extends AbstractDAOFactory {
             throw new Exception(e);
         }
     }
+
     @Override
     public CustomerDAO getCustomerDAO() {
         return new CustomerDAO();
     }
+
     @Override
     public EmployeeDAO getEmployeeDAO() {
         return new EmployeeDAO();
     }
+
     @Override
     public PositionDAO getPositionDAO() {
         return new PositionDAO();
     }
+
     @Override
     public TransactionDAO getTransactionDAO() {
         return new TransactionDAO();
     }
+
     @Override
     public FundDAO getFundDAO() {
         return new FundDAO();
     }
+
     @Override
     public FundPriceHistoryDAO getFundPriceHistoryDAO() {
         return new FundPriceHistoryDAO();

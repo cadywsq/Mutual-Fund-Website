@@ -1,13 +1,13 @@
 package edu.cmu.webapp.task7.model;
 
+import edu.cmu.webapp.task7.databean.EmployeeBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.EmployeeBean;
-
 public class EmployeeDAO {
     private SessionFactory sessionFactory;
+
     public EmployeeDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -16,6 +16,7 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
     }
+
     public void createEmployee(EmployeeBean employee) {
         if (employee == null) {
             return;
@@ -33,6 +34,7 @@ public class EmployeeDAO {
             session.close();
         }
     }
+
     public void updateEmployee(EmployeeBean employee) {
         if (employee == null) {
             return;
@@ -50,6 +52,7 @@ public class EmployeeDAO {
             session.close();
         }
     }
+
     public EmployeeBean getEmployeeByUserName(String username) {
         if (username == null || username.length() == 0) {
             return null;
@@ -69,6 +72,7 @@ public class EmployeeDAO {
         }
         return null;
     }
+
     public void deleteEmployeeById(int username) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -84,6 +88,7 @@ public class EmployeeDAO {
             session.close();
         }
     }
+
     public void deleteEmployee(EmployeeBean employee) {
         if (employee == null) {
             return;

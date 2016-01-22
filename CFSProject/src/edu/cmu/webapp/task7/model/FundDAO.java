@@ -1,13 +1,13 @@
 package edu.cmu.webapp.task7.model;
 
+import edu.cmu.webapp.task7.databean.FundBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.FundBean;
-
 public class FundDAO {
     private SessionFactory sessionFactory;
+
     public FundDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -16,6 +16,7 @@ public class FundDAO {
             e.printStackTrace();
         }
     }
+
     public void createFund(FundBean fund) {
         if (fund == null) {
             return;
@@ -34,6 +35,7 @@ public class FundDAO {
             session.close();
         }
     }
+
     public void updateFund(FundBean fund) {
         if (fund == null) {
             return;
@@ -51,6 +53,7 @@ public class FundDAO {
             session.close();
         }
     }
+
     public FundBean getFundByName(String name) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -67,6 +70,7 @@ public class FundDAO {
         }
         return null;
     }
+
     public FundBean getFundBySymbol(String symbol) {
         if (symbol == null) {
             return null;
@@ -87,6 +91,7 @@ public class FundDAO {
         }
         return null;
     }
+
     public FundBean getFundById(int fundId) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -103,6 +108,7 @@ public class FundDAO {
         }
         return null;
     }
+
     public void deleteFund(FundBean fund) {
         if (fund == null) {
             return;

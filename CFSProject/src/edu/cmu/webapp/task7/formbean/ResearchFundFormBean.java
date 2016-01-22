@@ -8,6 +8,7 @@ public class ResearchFundFormBean extends MyFormBean {
     private String action;
     private String startDate;
     private String endDate;
+    private String fundSymbol;
 
     @Override
     public List<String> getValidationErrors() {

@@ -1,15 +1,15 @@
 package edu.cmu.webapp.task7.model;
 
-import java.util.List;
-
+import edu.cmu.webapp.task7.databean.TransactionBean;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import edu.cmu.webapp.task7.databean.TransactionBean;
+import java.util.List;
 
 public class TransactionDAO {
     private SessionFactory sessionFactory;
+
     public TransactionDAO() {
         try {
             this.sessionFactory = DAOFactory.CreateSessionFactory();
@@ -18,6 +18,7 @@ public class TransactionDAO {
             e.printStackTrace();
         }
     }
+
     public void createTransaction(TransactionBean transaction) {
         if (transaction == null) {
             return;
@@ -35,6 +36,7 @@ public class TransactionDAO {
             session.close();
         }
     }
+
     public void updateTransaction(TransactionBean transaction) {
         if (transaction == null) {
             return;
@@ -52,6 +54,7 @@ public class TransactionDAO {
             session.close();
         }
     }
+
     public void deleteTransaction(TransactionBean transaction) {
         if (transaction == null) {
             return;
@@ -69,16 +72,20 @@ public class TransactionDAO {
             session.close();
         }
     }
+
     public List<TransactionBean> findTransactionsByCustomerId(int customerId) {
         return null;
     }
+
     public List<TransactionBean> findTransactionsByFundId(int fundId) {
         return null;
     }
+
     public void deleteTransactionsByCustomerId(int customerId) {
-        
+
     }
+
     public void deleteTransactionsByFundId(int fundId) {
-        
+
     }
 }
