@@ -25,14 +25,14 @@
 						<!-- Top Menu Items -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse">
 							<ul class="nav navbar-nav top-nav">
-								<li><a href="createEmployee.html">Create Employee
+								<li><a href="createEmployee.jsp">Create Employee
 										Account</a></li>
-								<li><a href="createCustomer.html">Create Customer
+								<li><a href="createCustomer.jsp">Create Customer
 										Account</a></li>
-								<li><a href="viewCustomerAccount.html">View Customer Account</a></li>
-								<li><a href="depositCheck.html">Deposit Check</a></li>
-								<li><a href="createFunds.html">Create Fund</a></li>
-								<li><a href="transitionDay.html">Transition Day</a></li>
+								<li><a href="viewCustomer.jsp">View Customer Account</a></li>
+								<li><a href="depositCheck.jsp">Deposit Check</a></li>
+								<li><a href="createFund.jsp">Create Fund</a></li>
+								<li><a href="transitionDay.jsp">Transition Day</a></li>
 							</ul>
 							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
