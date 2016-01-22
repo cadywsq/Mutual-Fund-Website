@@ -6,6 +6,8 @@ import edu.cmu.webapp.task7.databean.EmployeeBean;
 import edu.cmu.webapp.task7.formbean.ViewCustomerFormBean;
 import edu.cmu.webapp.task7.model.AbstractDAOFactory;
 import edu.cmu.webapp.task7.model.CustomerDAO;
+import org.mybeans.form.FormBeanException;
+import org.mybeans.form.FormBeanFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,39 +35,40 @@ public class ViewCustomerAction extends Action {
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors", errors);
         HttpSession employeeSession = request.getSession();
-//        try {
-        ViewCustomerFormBean form = formBeanFactory.create(request);
-        request.setAttribute("form", form);
-        EmployeeBean employee = (EmployeeBean) employeeSession.getAttribute("user");
-        //Check employee login.
-        if (employee == null) {
-            return "login.jsp";
-        }
+        try {
+            ViewCustomerFormBean form = formBeanFactory.create(request);
+            request.setAttribute("form", form);
+            EmployeeBean employee = (EmployeeBean) employeeSession.getAttribute("user");
+            //Check employee login.
+            if (employee == null) {
+                return "login.jsp";
+            }
 
-        if (!form.isPresent()) {
-            return "viewCustomer.jsp";
-        }
+            if (!form.isPresent()) {
+                return "viewCustomerAccount.jsp";
+            }
 
-        if (form.getAction().equals("View Customer Account")) {
-            errors.addAll(form.getValidationErrors());
-            //check form input.
-            if (errors.size() > 0) {
-                return "viewCustomer.jsp";
+            if (form.getAction().equals("View Customer Account")) {
+                errors.addAll(form.getValidationErrors());
+                //check form input.
+                if (errors.size() > 0) {
+                    return "viewCustomerAccount.jsp";
+                }
+                CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
+                //check customer existence.
+                if (customer == null) {
+                    errors.add("The customer doesn't exist");
+                    return "viewCustomerAccount.jsp";
+                }
+                //print out viewMyAccount.
+                HttpSession customerSession = request.getSession();
+
+                customerSession.setAttribute("customer", customer);
+                return "viewMyAccount.jsp";
             }
-            CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
-            //check customer existence.
-            if (customer == null) {
-                errors.add("The customer doesn't exist");
-                return "viewCustomer.jsp";
-            }
-            //print out viewMyAccount.
-            HttpSession customerSession = request.getSession();
-            customerSession.setAttribute("customer", customer);
-            return "viewMyAccount.jsp";
-            }
-//        } catch (MyFormBean.MyException e) {
-//            return "viewCustomer.jsp";
-//        }
-            return "viewCustomer.jsp";
+        } catch (FormBeanException e) {
+            return "viewCustomerAccount.jsp";
         }
+        return "viewCustomerAccount.jsp";
     }
+}
