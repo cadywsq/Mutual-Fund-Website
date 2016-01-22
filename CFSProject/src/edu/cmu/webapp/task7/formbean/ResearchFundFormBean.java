@@ -82,5 +82,13 @@ public class ResearchFundFormBean extends MyFormBean {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public String getFundSymbol() {
+        return fundSymbol;
+    }
+
+    public void setFundSymbol(String fundSymbol) {
+        this.fundSymbol = fundSymbol;
+    }
 }
 
